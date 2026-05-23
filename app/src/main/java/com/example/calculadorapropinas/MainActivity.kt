@@ -70,7 +70,12 @@ fun Calculadora() {
 
         // Botón para ejecutar el cálculo
         Button(
-            onClick = { },
+            onClick = {
+                val cuenta = valorCuenta.toDoubleOrNull() ?: 0.0 // Convierte el valor de la cuenta a Double
+                val porcentaje = porcentajePropina.toDoubleOrNull() ?: 0.0 // Convierte el porcentaje de propina a Double
+                val propina = cuenta * (porcentaje / 100) // Calcula la propina multiplicando el valor de la cuenta por el porcentaje dividido entre 100 val total = cuenta + propina // Calcula el total sumando el valor de la cuenta y la propina
+                resultado = "Resultado: $${"%.2f".format(propina)}" // Actualiza el resultado con el valor de la propina formateado a dos decimales
+            },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Calcular")
